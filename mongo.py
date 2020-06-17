@@ -1,13 +1,12 @@
-import pymongo
 import os
-
-from os import path
-if path.exists("env.py"):
+import pymongo
+if os.path.exists("env.py"):
     import env
 
-MONGO_URI = os.environ.get('MONGO_URI')
-DBS_NAME = "kristianhoogland"
-COLLECTION_NAME = "myFirstMDB"
+
+MONGO_URI = os.environ.get("MONGO_URI")
+DATABASE = "<kristianhoogland>"
+COLLECTION = "myFirstMDB"
 
 
 def mongo_connect(url):
@@ -21,7 +20,8 @@ def mongo_connect(url):
 
 conn = mongo_connect(MONGO_URI)
 
-coll = conn[DBS_NAME][COLLECTION_NAME]
+coll = conn[DATABASE][COLLECTION]
+
 
 documents = coll.find()
 
